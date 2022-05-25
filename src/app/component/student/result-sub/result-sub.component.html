@@ -1,0 +1,78 @@
+<app-sidenav></app-sidenav>
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-5 py-4">
+  <mat-card>
+    <div class="row">
+      <div class="col-8">
+
+        <h3>ตรวจสอบผลลงทะเบียน</h3>
+        <div class="row justify-content-center">
+          <div class="col-sm">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              ปีการศึกษา
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2560</a>
+              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2561</a>
+              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2562</a>
+              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2563</a>
+              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2564</a>
+            </div>
+          </div>
+          <div class="col-sm">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              ภาคเรียนที่
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="#" routerLinkActive="active">1</a>
+              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2</a>
+            </div>
+          </div>
+        </div>
+        <table class="table table-bordered border border-dark">
+          <thead>
+            <tr>
+              <th scope="col-2" class="text-center">รหัสวิชา</th>
+              <th scope="col-2" class="text-center">ชื่อวิชา</th>
+              <th scope="col-2" class="text-center">ตอนเรียน</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of Result">
+              <th scope="row">{{result.SubjectID}}</th>
+              <td>{{result.SubjectName}}</td>
+              <td>{{result.SectionNo}}</td>
+            </tr>
+          </tbody>
+          <!-- <tbody>
+            <tr>
+              <th scope="row">1001</th>
+              <td>Bubu101</td>
+              <td>1</td>
+
+            </tr>
+            <tr>
+              <th scope="row">1002</th>
+              <td></td>
+              <td></td>
+
+            </tr>
+            <tr>
+              <th scope="row">1003</th>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">2101</th>
+              <td></td>
+              <td></td>
+
+            </tr>
+
+          </tbody> -->
+        </table>
+      </div>
+    </div>
+  </mat-card>
+</div>
