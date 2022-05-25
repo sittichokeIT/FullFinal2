@@ -4,23 +4,20 @@
   <mat-card>
     <h3>เปลี่ยนตอนเรียน</h3>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div class="row justify-content-center">
-        <div class="col-3">
+      <div class="row">
+        <div class="col-4">
           <div class="mb-3 mr-4">
             <label for="exampleFormControlInput1" class="form-label">รหัสวิชา</label>
             <input type="text" class="form-control mb-4" formControlName="SubjectID" required>
           </div>
-          <div class="d-grid gap-2 d-md-block">
-            <button type="button" class="btn"  style="background-color: #8CD2DC;">+</button>
-          </div>
         </div>
-        <div class="col-1">
+        <div class="col-2">
           <div class="mb-3 ">
             <label for="exampleFormControlInput1" class="form-label">ตอนเรียนเดิม</label>
             <input type="text" class="form-control mb-4" formControlName="SectionOld" required>
           </div>
         </div>
-        <div class="col-1">
+        <div class="col-2">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">ตอนเรียนใหม่</label>
             <input type="text" class="form-control mb-4" formControlName="SectionNew" required>

@@ -8,16 +8,19 @@
           <div class="col-4">
             <div class="mb-3 mr-5">
               <label for="exampleFormControlInput1" class="form-label">รหัสวิชา</label>
-              <input type="text" class="form-control mb-4" formControlName="SubjectID" required>
-            </div>
+              <!-- <input type="text" class="form-control mb-4" formControlName="SubjectID" required> -->
+
+            <input type="text" class="form-control mb-4" *ngFor="let i of Array" formControlName="SubjectID" required>
+          </div>
             <div class="d-grid gap-2 d-md-block">
-              <button type="button" class="btn" style="background-color: #8CD2DC;">+</button>
+              <button type="button" class="btn" style="background-color: #8CD2DC;" (click)="add()">+</button>
             </div>
           </div>
           <div class="col-1">
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">ตอนเรียน</label>
-              <input type="text" class="form-control mb-4" formControlName="SectionNo" required>
+              <!-- <input type="text" class="form-control mb-4" formControlName="SectionNo" required> -->
+              <input type="text" class="form-control mb-4" *ngFor="let i of Array" formControlName="SectionNo" required>
             </div>
           </div>
         </div>

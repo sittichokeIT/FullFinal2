@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {  catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
-
+import * as _ from 'lodash';
 //model
 export class Register {
   UserID!: String;
@@ -90,6 +90,13 @@ export class CrudService {
     }
     console.log(errorMessage)
     return throwError(errorMessage)
+  }
+
+  getDropDownText(id: string | _.Dictionary<any> | null | undefined,objec: { id: number; year: string;  }[]){
+    const selObj = _.filter(objec, function (o) {
+        return (_.includes(id,o.id));
+    });
+    return selObj;
   }
 
 }

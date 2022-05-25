@@ -1,23 +1,24 @@
 <app-sidenav></app-sidenav>
 <div class="col-md-9 ml-sm-auto col-lg-10 px-md-5 py-4">
+  <h4>Selected Values</h4>
+
+  <div>
+    Selected: {{selectedValue}}
+  </div>
+
   <mat-card>
     <div class="row">
       <div class="col-8">
-
+        <div>
+        </div>
         <h3>ตรวจสอบผลลงทะเบียน</h3>
         <div class="row justify-content-center">
           <div class="col-sm">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              ปีการศึกษา
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2560</a>
-              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2561</a>
-              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2562</a>
-              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2563</a>
-              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2564</a>
-            </div>
+            <select name="my-select" [(ngModel)]="mySelect" (change)="selectChange()">
+              <option [value]="item.id" *ngFor="let item of data">
+                {{item.year}}
+              </option>
+            </select>
           </div>
           <div class="col-sm">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -45,32 +46,7 @@
               <td>{{result.SectionNo}}</td>
             </tr>
           </tbody>
-          <!-- <tbody>
-            <tr>
-              <th scope="row">1001</th>
-              <td>Bubu101</td>
-              <td>1</td>
 
-            </tr>
-            <tr>
-              <th scope="row">1002</th>
-              <td></td>
-              <td></td>
-
-            </tr>
-            <tr>
-              <th scope="row">1003</th>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">2101</th>
-              <td></td>
-              <td></td>
-
-            </tr>
-
-          </tbody> -->
         </table>
       </div>
     </div>

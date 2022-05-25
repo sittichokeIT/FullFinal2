@@ -17,9 +17,9 @@ export class ResultSubComponent implements OnInit {
     public formBuilder: FormBuilder
     ) {
     this.registerResult = formBuilder.group({
-      UserID: 6204062620046,
-      Term: 1,
-      Year: 2565
+      UserID: 6204062620097,
+       Term: 1,
+       year: 2565
     })
   }
 
@@ -30,6 +30,36 @@ export class ResultSubComponent implements OnInit {
       this.Result = res
     })
   }
+  mySelect = '2';
+  selectedValue: any;
 
+  data = [
+    {
+      id: 1,
+      year: '2563',
+    },
+    {
+      id: 2,
+      year: '2564',
+    },
+    {
+      id: 3,
+      year: '2565',
+    }
+
+  ];
+
+
+  selectChange() {
+      this.selectedValue = this.crudService.getDropDownText(this.mySelect, this.data)[0].year;
+      this.registerResult = this.formBuilder.group({
+        Year: [this.selectedValue],
+        Term: 1,
+      })
+
+  }
 
 }
+
+
+

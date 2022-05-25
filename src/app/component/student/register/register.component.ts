@@ -37,7 +37,10 @@ export class RegisterComponent implements OnInit {
       console.log(error)
     })
   }
-  // fakeArray = new Array(12);
 
+  Array = new Array(3);
+  add(){
+    this.Array = new Array(this.Array.length+1);
+  }
 
 }
