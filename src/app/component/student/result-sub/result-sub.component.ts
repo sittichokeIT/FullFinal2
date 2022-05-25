@@ -17,9 +17,9 @@ export class ResultSubComponent implements OnInit {
     public formBuilder: FormBuilder
     ) {
     this.registerResult = formBuilder.group({
-      UserID: 6204062620097,
-       Term: 1,
-       year: 2565
+      UserID: localStorage.getItem('UserID'),
+      Term: 1,
+      year: 2565
     })
   }
 
@@ -30,6 +30,7 @@ export class ResultSubComponent implements OnInit {
       this.Result = res
     })
   }
+  
   mySelect = '2';
   selectedValue: any;
 

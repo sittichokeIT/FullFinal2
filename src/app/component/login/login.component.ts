@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   myform: FormGroup;
   who!: Login;
 
-  constructor(private fb: FormBuilder, public http: HttpClient,public router: Router) { 
+  constructor(private fb: FormBuilder, public http: HttpClient, public router: Router) { 
     this.myform = this.fb.group ({
       UserID: ['',[Validators.required]],
       password: ['',[Validators.required]],
@@ -27,12 +27,24 @@ export class LoginComponent implements OnInit {
     //console.log(this.myform.value);
     this.http.post('http://localhost:4000/api/user/login', this.myform.value).subscribe({
       next: (response) => {
-        const test = Object.values(response)
-        console.log(test[0]);
-        if(test[0] == 'Student') this.router.navigate(['register'])
-        if(test[0] == 'Teacher') this.router.navigate(['sub-taught'])
-        if(test[0] == 'Leader') this.router.navigate(['lsub-taught'])
-        if(test[0] == 'Login fail') alert("Login failed")
+        const res = Object.values(response)
+        console.log(res[1]);
+        if(res[0] == 'Student') {
+          this.router.navigate(['register'])
+          localStorage.setItem('auth-token', res[1]);
+          localStorage.setItem('UserID', res[2]);
+        }
+        if(res[0] == 'Teacher') {
+          this.router.navigate(['sub-taught'])
+          localStorage.setItem('auth-token', res[1]);
+          localStorage.setItem('UserID', res[2]);
+        }
+        if(res[0] == 'Leader') {
+          this.router.navigate(['lsub-taught'])
+          localStorage.setItem('auth-token', res[1]);
+          localStorage.setItem('UserID', res[2]);
+        }
+        if(res[0] == 'Login fail') alert("Login failed")
       },
       error: (error) => console.log(error),
     });

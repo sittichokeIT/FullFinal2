@@ -17,7 +17,7 @@ export class TableSubComponent implements OnInit {
     public formBuilder: FormBuilder
     ) {
     this.registerResult = formBuilder.group({
-      UserID: 6204062620097
+      UserID: localStorage.getItem('UserID')
     })
   }
 

@@ -17,7 +17,7 @@ export class AddSubComponent implements OnInit {
     private crudService: CrudService
   ) {
     this.registerForm = formBuilder.group({
-      UserID: 6204062620046,
+      UserID: localStorage.getItem('UserID'),
       SubjectID: [''],
       SectionNo: ['']
     })
