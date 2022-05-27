@@ -31,8 +31,11 @@ export class ResultSubComponent implements OnInit {
     })
   }
   
-  mySelect = '2';
+  mySelect = '3';
+  mySelect2 = '0';
   selectedValue: any;
+  selectedValue2: any;
+  num = [{id: 0, value: '1'}, {id: 1, value: '2'}]
 
   data = [
     {
@@ -53,9 +56,23 @@ export class ResultSubComponent implements OnInit {
 
   selectChange() {
       this.selectedValue = this.crudService.getDropDownText(this.mySelect, this.data)[0].year;
+      this.selectedValue2 = this.crudService.getDropDownText2(this.mySelect2, this.num)[0].value;
       this.registerResult = this.formBuilder.group({
-        Year: [this.selectedValue],
-        Term: 1,
+        UserID: localStorage.getItem('UserID'),
+        year: [this.selectedValue],
+        Term: [this.selectedValue2],
+      })
+      // console.log(this.mySelect2);
+      this.crudService.regirterResult(this.registerResult.value)
+      .subscribe(res => {
+        const response = Object.values(res)
+        console.log(response[0]);
+        if(response[0] == 'Error'){
+          this.Result = null
+        }else{
+          console.log(res)
+          this.Result = res
+        }
       })
 
   }

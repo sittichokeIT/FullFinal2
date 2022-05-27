@@ -99,4 +99,10 @@ export class CrudService {
     return selObj;
   }
 
+  getDropDownText2(id: string | _.Dictionary<any> | null | undefined,objec: { id: number; value: string;  }[]){
+    const selObj = _.filter(objec, function (o) {
+        return (_.includes(id,o.id));
+    });
+    return selObj;
+  }
 }

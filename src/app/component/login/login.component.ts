@@ -33,16 +33,19 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['register'])
           localStorage.setItem('auth-token', res[1]);
           localStorage.setItem('UserID', res[2]);
+          localStorage.setItem('Name', res[3]);
         }
         if(res[0] == 'Teacher') {
           this.router.navigate(['sub-taught'])
           localStorage.setItem('auth-token', res[1]);
           localStorage.setItem('UserID', res[2]);
+          localStorage.setItem('Name', res[3]);
         }
         if(res[0] == 'Leader') {
           this.router.navigate(['lsub-taught'])
           localStorage.setItem('auth-token', res[1]);
           localStorage.setItem('UserID', res[2]);
+          localStorage.setItem('Name', res[3]);
         }
         if(res[0] == 'Login fail') alert("Login failed")
       },

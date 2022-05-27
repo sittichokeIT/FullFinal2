@@ -21,17 +21,14 @@
             </select>
           </div>
           <div class="col-sm">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              ภาคเรียนที่
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" routerLink="#" routerLinkActive="active">1</a>
-              <a class="dropdown-item" routerLink="#" routerLinkActive="active">2</a>
-            </div>
+            <select name="my-select" [(ngModel)]="mySelect2" (change)="selectChange()">
+              <option [value]="item.id" *ngFor="let item of num">
+                ภาคเรียนที่ {{item.value}}
+              </option>
+            </select>
           </div>
         </div>
-        <table class="table table-bordered border border-dark">
+        <table class="table table-bordered border border-dark" style="margin-top: 10px">
           <thead>
             <tr>
               <th scope="col-2" class="text-center">รหัสวิชา</th>

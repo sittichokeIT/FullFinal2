@@ -13,6 +13,7 @@ export class SidenavComponent implements OnInit {
     token: localStorage.getItem('auth-token') ,
     UserID: localStorage.getItem('UserID')
   }
+  Name = localStorage.getItem('Name')
 
   constructor(public http: HttpClient, public router: Router) { }
 
@@ -20,11 +21,15 @@ export class SidenavComponent implements OnInit {
   }
 
   verify(string: string) {
+    
     this.http.post('http://localhost:4000/api/user/test', this.auth).subscribe({
       next: (response) => {
+        const res = Object.values(response)
+        //console.log(res[0]);
         //console.log(string)
-        //console.log(response)
-        if(response == localStorage.getItem('UserID')){
+        // console.log(response)
+        // console.log(localStorage.getItem('UserID'));
+        if(res[0] == localStorage.getItem('UserID')){
           if(string == "register") this.router.navigate(['register'])
           if(string == "addSub") this.router.navigate(['addSub'])
           if(string == "changeSub") this.router.navigate(['changeSub'])
@@ -33,9 +38,10 @@ export class SidenavComponent implements OnInit {
           if(string == "tableSub") this.router.navigate(['tableSub'])
         }else{
           alert("Token expired")
+          this.router.navigate([''])
         }
       },
-      error: (error) => console.log(error)
+      error: () => alert("Token expired")
     });
   }
 }
