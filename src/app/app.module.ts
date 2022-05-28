@@ -29,6 +29,8 @@ import { LsidenavComponent } from './component/leader/lsidenav/lsidenav.componen
 import { LstudentListComponent } from './component/leader/lstudent-list/lstudent-list.component';
 import { LsubjectsTaughtComponent } from './component/leader/lsubjects-taught/lsubjects-taught.component';
 import { LdataSubjectComponent } from './component/leader/ldata-subject/ldata-subject.component';
+import { SubjectFormComponent } from './component/teacher/subject-form/subject-form.component';
+import { CreateUserComponent } from './component/leader/create-user/create-user.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { LdataSubjectComponent } from './component/leader/ldata-subject/ldata-su
     LsidenavComponent,
     LstudentListComponent,
     LsubjectsTaughtComponent,
-    LdataSubjectComponent
+    LdataSubjectComponent,
+    SubjectFormComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

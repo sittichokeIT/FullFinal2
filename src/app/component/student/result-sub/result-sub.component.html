@@ -16,7 +16,7 @@
           <div class="col-sm">
             <select name="my-select" [(ngModel)]="mySelect" (change)="selectChange()">
               <option [value]="item.id" *ngFor="let item of data">
-                {{item.year}}
+                ปีการศึกษาที่ {{item.value}}
               </option>
             </select>
           </div>
@@ -28,7 +28,7 @@
             </select>
           </div>
         </div>
-        <table class="table table-bordered border border-dark" style="margin-top: 10px">
+        <table class="table table-bordered border border-dark" style="margin-top: 10px; font-size: 18px">
           <thead>
             <tr>
               <th scope="col-2" class="text-center">รหัสวิชา</th>
@@ -38,9 +38,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let result of Result">
-              <th scope="row">{{result.SubjectID}}</th>
+              <th scope="row" style="text-align: center">{{result.SubjectID}}</th>
               <td>{{result.SubjectName}}</td>
-              <td>{{result.SectionNo}}</td>
+              <td style="text-align: center">{{result.SectionNo}}</td>
             </tr>
           </tbody>
 

@@ -1,0 +1,115 @@
+<app-tsidenav></app-tsidenav>
+<div class="col-md-9 ml-sm-auto col-lg-10 px-md-5 py-4">
+  <mat-card>
+    <h3>เพิ่มวิชา</h3>
+    <form [formGroup]="subjectForm" (ngSubmit)="submit()">
+      <div class="row" style="margin-top: 10px;">
+        <div class="col">
+          <label for="SubjectID">รหัสวิชา</label>
+          <input type="text" class="form-control" placeholder="รหัสวิชา" formControlName="SubjectID">
+        </div>
+        <div class="col">
+          <label for="SubjectName">ชื่อวิชา</label>
+          <input type="text" class="form-control" placeholder="ชื่อวิชา" formControlName="SubjectName">
+        </div>
+      </div><br>
+      <div class="form-group">
+        <label for="SubjectRoom">ห้องเรียน</label>
+        <input type="text" class="form-control" placeholder="ห้องเรียน" formControlName="SubjectRoom">
+      </div><br>
+      <div class="row">
+        <div class="col-md-6 dropdown">
+          <label for="SubjectRoom">ตอนเรียนที่</label>
+          <!-- <button class="ml-3 btn btn-light dropdown-toggle" type="button" id="SectionNo" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            ตอนเรียนที่
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">1</a>
+            <a class="dropdown-item" href="#">2</a>
+          </div> -->
+          <select class="ml-3 btn btn-light dropdown-toggle" name="my-select" [(ngModel)]="mySelect" formControlName="SectionNo">
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+        <div class="col-md-6 dropdown">
+          <label for="SubjectRoom">วันสอน</label>
+          <!-- <button class="ml-3 btn btn-light dropdown-toggle" type="button" id="Day" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            วันสอน
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">จันทร์</a>
+            <a class="dropdown-item" href="#">อังคาร</a>
+            <a class="dropdown-item" href="#">พุธ</a>
+            <a class="dropdown-item" href="#">พฤหัสบดี</a>
+            <a class="dropdown-item" href="#">ศุกร์</a>
+            <a class="dropdown-item" href="#">เสาร์</a>
+            <a class="dropdown-item" href="#">อาทิตย์</a>
+          </div> -->
+          <select class="ml-3 btn btn-light dropdown-toggle" name="my-select" [(ngModel)]="mySelect2" formControlName="Day">
+            <option value="Mon">จันทร์</option>
+            <option value="Tue">อังคาร</option>
+            <option value="Wed">พุธ</option>
+            <option value="Thu">พฤหัสบดี</option>
+            <option value="Fri">ศุกร์</option>
+            <option value="Sat">เสาร์</option>
+            <option value="Sun">อาทิตย์</option>
+          </select>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-6 dropdown">
+          <label for="SubjectRoom">เวลาเริ่ม</label>
+          <!-- <button class="ml-3 btn btn-light dropdown-toggle" type="button" id="StartTime" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            เวลาเริ่ม
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">09.00 น.</a>
+            <a class="dropdown-item" href="#">13.00 น.</a>
+            <a class="dropdown-item" href="#">17.00 น.</a>
+          </div> -->
+          <select class="ml-3 btn btn-light dropdown-toggle" name="my-select" [(ngModel)]="mySelect3" formControlName="StartTime">
+            <option value="9:00">9:00</option>
+            <option value="13:00">13:00</option>
+            <option value="17:00">17:00</option>
+          </select>
+        </div>
+        <div class="col-md-6 dropdown">
+          <label for="SubjectRoom">ถึง</label>
+          <!-- <button class="ml-3 btn btn-light dropdown-toggle" type="button" id="EndTime" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            ถึง
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">12.00 น.</a>
+            <a class="dropdown-item" href="#">16.00 น.</a>
+            <a class="dropdown-item" href="#">20.00 น.</a>
+          </div> -->
+          <select class="ml-3 btn btn-light dropdown-toggle" name="my-select" [(ngModel)]="mySelect4" formControlName="EndTime">
+            <option value="12:00">12:00</option>
+            <option value="16:00">16:00</option>
+            <option value="20:00">20:00</option>
+          </select>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="start">วันสอบกลางภาค</label>
+          <input class="ml-3" type="date" id="start" name="trip-start" min="2022-05-28" [(ngModel)]="Midterm" formControlName="MidtermDate">
+        </div><br>
+        <div class="col-md-6 form-group">
+          <label for="start">วันสอบกลางภาค</label>
+          <input class="ml-3" type="date" id="start" name="trip-start" min="2022-05-28" [(ngModel)]="Final" formControlName="FinalDate">
+        </div>
+      </div><br>
+
+      <div class="col-auto ">
+        <button type="submit" class="btn btn-primary mb-3 container">บันทึก</button>
+      </div>
+    </form>
+
+  </mat-card>
+</div>

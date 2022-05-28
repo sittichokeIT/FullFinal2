@@ -22,7 +22,7 @@ export class SidenavComponent implements OnInit {
 
   verify(string: string) {
     
-    this.http.post('http://localhost:4000/api/user/test', this.auth).subscribe({
+    this.http.post('http://localhost:4000/api/user/verify', this.auth).subscribe({
       next: (response) => {
         const res = Object.values(response)
         //console.log(res[0]);

@@ -27,12 +27,18 @@ export class SubjectTest {
   UserID!: String;
 }
 
+export class Verify {
+  token!: String | null;
+  UserID!: String | null;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
 
   // rootpath
+  REST_APIUSER: string = "http://localhost:4000/api/user"
   REST_APIREGIS: string = "http://localhost:4000/api/register"
   REST_APISUBJ: string = "http://localhost:4000/api/subject"
 
@@ -92,17 +98,50 @@ export class CrudService {
     return throwError(errorMessage)
   }
 
-  getDropDownText(id: string | _.Dictionary<any> | null | undefined,objec: { id: number; year: string;  }[]){
+  getDropDownText(id: string | _.Dictionary<any> | null | undefined,objec: { id: number; value: string;  }[]){
     const selObj = _.filter(objec, function (o) {
         return (_.includes(id,o.id));
     });
     return selObj;
   }
 
-  getDropDownText2(id: string | _.Dictionary<any> | null | undefined,objec: { id: number; value: string;  }[]){
-    const selObj = _.filter(objec, function (o) {
-        return (_.includes(id,o.id));
-    });
-    return selObj;
+  subjectTeach(data: SubjectTest): Observable<any> {
+    let API_URL = `${this.REST_APISUBJ}/findteach`
+    return this.httpClient.post(API_URL,data)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  subjectTeachSec(data: SubjectTest): Observable<any> {
+    let API_URL = `${this.REST_APISUBJ}/findSec`
+    return this.httpClient.post(API_URL,data)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  getStudent(data: SubjectTest): Observable<any> {
+    let API_URL = `${this.REST_APISUBJ}/getStudent`
+    return this.httpClient.post(API_URL,data)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  verify(data: Verify): Observable<any> {
+    let API_URL = `${this.REST_APIUSER}/verify`
+    return this.httpClient.post(API_URL,data)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  createSubject(data: SubjectTest): Observable<any> {
+    let API_URL = `${this.REST_APISUBJ}/createSubject`
+    return this.httpClient.post(API_URL,data)
+    .pipe(
+      catchError(this.handleError)
+    )
   }
 }

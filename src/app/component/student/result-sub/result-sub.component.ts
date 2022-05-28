@@ -24,15 +24,22 @@ export class ResultSubComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.registerResult.value)
     this.crudService.regirterResult(this.registerResult.value)
     .subscribe(res => {
-      console.log(res)
-      this.Result = res
+      const response = Object.values(res)
+      if(response[0] == 'Error'){
+        this.Result = null
+      }else{
+        console.log(res)
+        this.Result = res
+      }
     })
   }
   
   mySelect = '3';
   mySelect2 = '0';
+  check = this.mySelect;
   selectedValue: any;
   selectedValue2: any;
   num = [{id: 0, value: '1'}, {id: 1, value: '2'}]
@@ -40,44 +47,44 @@ export class ResultSubComponent implements OnInit {
   data = [
     {
       id: 1,
-      year: '2563',
+      value: '2563',
     },
     {
       id: 2,
-      year: '2564',
+      value: '2564',
     },
     {
       id: 3,
-      year: '2565',
+      value: '2565',
     }
 
   ];
 
-
   selectChange() {
-      this.selectedValue = this.crudService.getDropDownText(this.mySelect, this.data)[0].year;
-      this.selectedValue2 = this.crudService.getDropDownText2(this.mySelect2, this.num)[0].value;
-      this.registerResult = this.formBuilder.group({
-        UserID: localStorage.getItem('UserID'),
-        year: [this.selectedValue],
-        Term: [this.selectedValue2],
-      })
-      // console.log(this.mySelect2);
-      this.crudService.regirterResult(this.registerResult.value)
-      .subscribe(res => {
-        const response = Object.values(res)
-        console.log(response[0]);
-        if(response[0] == 'Error'){
-          this.Result = null
-        }else{
-          console.log(res)
-          this.Result = res
-        }
-      })
-
+    if(this.mySelect != this.check){
+      this.mySelect2 = '0'
+      this.check = this.mySelect
+    }
+    this.selectedValue = this.crudService.getDropDownText(this.mySelect, this.data)[0].value;
+    this.selectedValue2 = this.crudService.getDropDownText(this.mySelect2, this.num)[0].value;
+    this.registerResult = this.formBuilder.group({
+      UserID: localStorage.getItem('UserID'),
+      year: [this.selectedValue],
+      Term: [this.selectedValue2],
+    })
+    //console.log(this.registerResult.value);
+    this.crudService.regirterResult(this.registerResult.value)
+    .subscribe(res => {
+      const response = Object.values(res)
+      //console.log(response);
+      if(response[0] == 'Error'){
+        this.Result = null
+      }else{
+        //console.log(res)
+        this.Result = res
+      }
+    })
   }
-
 }
-
 
 

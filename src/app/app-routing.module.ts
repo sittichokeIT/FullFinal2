@@ -13,8 +13,9 @@ import { RegisterComponent } from './component/student/register/register.compone
 import { ResultSubComponent } from './component/student/result-sub/result-sub.component';
 import { TableSubComponent } from './component/student/table-sub/table-sub.component';
 import { StudentListComponent } from './component/teacher/student-list/student-list.component';
+import { SubjectFormComponent } from './component/teacher/subject-form/subject-form.component';
 import { SubjectsTaughtComponent } from './component/teacher/subjects-taught/subjects-taught.component';
-
+import { CreateUserComponent } from './component/leader/create-user/create-user.component';
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path:'ldata-subject' , component:LdataSubjectComponent},
   { path:'lsub-taught' , component: LsubjectsTaughtComponent},
   { path:'lstudentList' , component: LstudentListComponent},
+  { path:'subject-form' , component: SubjectFormComponent},
+  { path:'create-user', component: CreateUserComponent},
 ];
 
 @NgModule({
