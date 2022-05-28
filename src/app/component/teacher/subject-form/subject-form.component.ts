@@ -10,6 +10,11 @@ import { CrudService } from 'src/app/service/crud.service';
 })
 export class SubjectFormComponent implements OnInit {
 
+  auth = { 
+    token: localStorage.getItem('auth-token') ,
+    UserID: localStorage.getItem('UserID')
+  }
+
   subjectForm: FormGroup;
   myDate: Date;
 
@@ -25,8 +30,8 @@ export class SubjectFormComponent implements OnInit {
       FinalDate: '',
       StartTime: '',
       EndTime: '',
-      Term: 1,
-      Year: 2565,
+      Term: '',
+      Year: '',
       UserID: localStorage.getItem('UserID')
     })
   }
@@ -42,20 +47,33 @@ export class SubjectFormComponent implements OnInit {
   }
 
   submit(){
-    this.setDate()
-    this.crudService.createSubject(this.subjectForm.value)
-    .subscribe(res => {
-      const response = Object.values(res)
-      if(response[0] != "Subject added Successfully!"){
-        alert("Subject fail")
-        this.router.navigate(['subject-form'])
-      }
-      else {
-        alert("Subject added Successfully!")
-        this.router.navigate(['sub-taught'])
-      }
+    this.crudService.verify(this.auth)
+    .subscribe({
+      next: (response) => {
+        const res = Object.values(response)
+        if(res[0] == localStorage.getItem('UserID')){
+          this.setDate()
+          this.crudService.createSubject(this.subjectForm.value)
+          .subscribe(res => {
+            const response = Object.values(res)
+            if(response[0] != "Subject added Successfully!"){
+              alert("Subject fail")
+              this.router.navigate(['subject-form'])
+            }
+            else {
+              alert("Subject added Successfully!")
+              this.router.navigate(['sub-taught'])
+            }
+          })
+          console.log(this.subjectForm.value)
+        }
+        else{
+          alert("Token expired")
+          this.router.navigate([''])
+        }
+      },
+      error: () => alert("Token expired")
     })
-    console.log(this.subjectForm.value)
   }
 
   setDate(){

@@ -27,11 +27,12 @@ export class LsidenavComponent implements OnInit {
     .subscribe({
       next: (response) => {
         const res = Object.values(response)
+        //console.log(res[0]);
+        //console.log(string)
+        // console.log(response)
+        // console.log(localStorage.getItem('UserID'));
         if(res[0] == localStorage.getItem('UserID')){
-          if(string == "lsub-taught") this.router.navigate(['lsub-taught'])
-          if(string == "lstudentList") this.router.navigate(['lstudentList'])
-          if(string == "ldata-subject") this.router.navigate(['ldata-subject'])
-
+          if(string == "create-user") this.router.navigate(['create-user'])
         }else{
           alert("Token expired")
           this.router.navigate([''])

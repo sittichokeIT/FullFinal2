@@ -32,6 +32,15 @@ export class Verify {
   UserID!: String | null;
 }
 
+export class CreateUser {
+  UserID!: String;
+  firstname!: String;
+  email!: String;
+  password!: String;
+  address!: String;
+  telno!: String;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -139,6 +148,14 @@ export class CrudService {
 
   createSubject(data: SubjectTest): Observable<any> {
     let API_URL = `${this.REST_APISUBJ}/createSubject`
+    return this.httpClient.post(API_URL,data)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  createUser(data: CreateUser): Observable<any>{
+    let API_URL = `${this.REST_APIUSER}/createUser`
     return this.httpClient.post(API_URL,data)
     .pipe(
       catchError(this.handleError)

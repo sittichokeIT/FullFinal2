@@ -12,7 +12,7 @@
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
         aria-expanded="false">
-        ดร.ชมลดา ชมศร
+        {{Name}}
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li><a class="dropdown-item" href="#">Sign out</a></li>
@@ -27,22 +27,9 @@
         <ul class="nav flex-column list-group" >
           <li class="nav-item list-group-item">
             <a class="nav-link">
-              <a id = "GFG" (click)="verify('lsub-taught')">วิชาที่สอน</a>
+              <a id = "GFG" (click)="verify('create-user')">เพิ่มผู้ใช้</a>
             </a>
           </li>
-
-          <li class="nav-item list-group-item">
-          <a class="nav-link">
-             <a id = "GFG" (click)="verify('lstudentList')">รายชื่อนักศึกษา</a>
-            </a>
-          </li>
-
-          <li class="nav-item list-group-item">
-            <a class="nav-link">
-               <a id = "GFG" (click)="verify('ldata-subject')">ข้อมูลรายวิชา</a>
-              </a>
-            </li>
-
         </ul>
       </div>
     </nav>
